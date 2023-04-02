@@ -32,3 +32,15 @@ func If7D(pai models.PaiArr) bool {
 	}
 	return sum == 14
 }
+
+// If13G 对国士无双的判断
+func If13G(pai models.PaiArr) bool {
+	arrs := []int{pai.M[0], pai.M[8], pai.P[0], pai.P[8], pai.S[0], pai.S[8]}
+	arrs = append(arrs, pai.Z[:]...)
+	for _, arr := range arrs {
+		if arr == 0 {
+			return false
+		}
+	}
+	return getSum(pai) == 14
+}
