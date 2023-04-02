@@ -5,8 +5,8 @@ import (
 	"richii_go/models"
 )
 
-// sum 返回牌的总数
-func sum(pai models.PaiArr) int {
+// getSum 返回牌的总数
+func getSum(pai models.PaiArr) int {
 	total := 0
 	for i := 0; i < 10; i++ {
 		total += pai.S[i]
@@ -19,8 +19,8 @@ func sum(pai models.PaiArr) int {
 	return total
 }
 
-// Check7D 七对子型特判
-func Check7D(pai models.PaiArr) bool {
+// If7D 对七对的判断
+func If7D(pai models.PaiArr) bool {
 	//合并数组，方便处理
 	arrs := append(append(append(pai.S[:], pai.M[:]...), pai.Z[:]...), pai.P[:]...)
 	sum := 0

@@ -19,5 +19,5 @@ func TestCheck7D(t *testing.T) {
 		Z:    [7]int{0, 0, 0, 0, 0, 0, 0},
 		Dora: 0,
 	}
-	assert.True(t, Check7D(testCase1))
+	assert.True(t, If7D(testCase1))
 }
