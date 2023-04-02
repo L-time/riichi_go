@@ -54,9 +54,9 @@ func TestIsNormal(t *testing.T) {
 	assert.True(t, IsNormal(testCase[3]))
 }
 
-func TestIsAll(t *testing.T) {
-	assert.True(t, IsAll(testCase[0]))
-	assert.True(t, IsAll(testCase[1]))
-	assert.True(t, IsAll(testCase[2]))
-	assert.True(t, IsAll(testCase[3]))
+func TestIsValid(t *testing.T) {
+	assert.True(t, IsValid(testCase[0]))
+	assert.True(t, IsValid(testCase[1]))
+	assert.True(t, IsValid(testCase[2]))
+	assert.True(t, IsValid(testCase[3]))
 }

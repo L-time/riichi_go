@@ -1,10 +1,12 @@
-// Package check主要提供了检测矩阵牌型是否为和牌的情况，并且暴露一定的api供外部使用
+// Package check主要提供了检测牌型是否为和牌的情况，并且暴露一定的功能供外部使用
 package check
 
 import (
 	"richii_go/models"
 )
 
+// sum 就简单求个和……
+// 懒得写了，自己看
 func sum(p [9]int) int {
 	s := 0
 	for i := 0; i < 9; i++ {
@@ -12,9 +14,6 @@ func sum(p [9]int) int {
 	}
 	return s
 }
-
-// MPSZ 牌面后缀
-var MPSZ = [4]string{"m", "p", "s", "z"}
 
 // Is7D 对七对的判断
 func Is7D(pai models.HaiArr) bool {
@@ -36,11 +35,11 @@ func Is7D(pai models.HaiArr) bool {
 	return true
 }
 
-// Is13G 对国士无双的判断
+// Is13G 对国士无双类牌型的判断
 func Is13G(pai models.HaiArr) bool {
-	arrs := []int{pai[0][0], pai[0][8], pai[1][0], pai[1][8], pai[2][0], pai[2][8]}
-	arrs = append(arrs, pai[3][0:7]...)
-	for _, arr := range arrs {
+	arrays := []int{pai[0][0], pai[0][8], pai[1][0], pai[1][8], pai[2][0], pai[2][8]}
+	arrays = append(arrays, pai[3][0:7]...)
+	for _, arr := range arrays {
 		if arr == 0 {
 			return false
 		}
@@ -104,7 +103,7 @@ func isRowNormal(pai [9]int, isJiHai bool) bool {
 func IsNormal(pai models.HaiArr) bool {
 	j := 0
 	for i := 0; i < 4; i++ {
-		//对于每一种牌，如果多出来一张，那么无论如何这张牌都无法被合并，因此绝对不可能是合法和牌型
+		//对于每一种牌，如果多出来一张，那么无论如何这张牌都无法被合并，因此绝对不可能是合法的和牌型
 		if sum(pai[i])%3 == 1 {
 			return false
 		}
@@ -120,7 +119,7 @@ func IsNormal(pai models.HaiArr) bool {
 		isRowNormal(pai[2], false)
 }
 
-// IsAll 对所有验证方法的封装
-func IsAll(pai models.HaiArr) bool {
+// IsValid 对所有验证方法的封装
+func IsValid(pai models.HaiArr) bool {
 	return IsNormal(pai) || Is7D(pai) || Is13G(pai)
 }
