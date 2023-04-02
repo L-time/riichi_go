@@ -1,12 +1,12 @@
 package models
 
-// PaiArr 定义了处理的牌型
+// PaiArr 定义了处理的牌型模型
 type PaiArr struct {
-	//万子
+	//万
 	M [9]int
-	//筒子
+	//筒
 	P [9]int
-	//万子
+	//索
 	S [9]int
 	//字牌
 	Z [7]int
