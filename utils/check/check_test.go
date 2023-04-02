@@ -6,29 +6,57 @@ import (
 	"testing"
 )
 
-var testCase1 models.PaiArr
-var testCase2 models.PaiArr
-var testCase3 models.PaiArr
-var testCase4 models.PaiArr
+var testCase = []models.HaiArr{
+	{
+		{2, 2, 0, 2, 0, 0, 2, 2, 2},
+		{0, 0, 2, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	},
+	{
+		{1, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 2, 1, 1, 1, 1, 1, 0, 0},
+	},
+	{
+		{0, 0, 0, 0, 0, 2, 2, 2, 0},
+		{0, 0, 0, 0, 0, 0, 1, 1, 1},
+		{0, 0, 2, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 3, 0, 0, 0},
+	},
+	{
+		{2, 2, 2, 2, 0, 0, 2, 2, 2},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	},
+}
 
 func TestIf7D(t *testing.T) {
-	testCase1 = models.PaiArr{
-		M:    [9]int{2, 2, 0, 2, 0, 0, 2, 2, 2},
-		P:    [9]int{0, 0, 2, 0, 0, 0, 0, 0, 0},
-		S:    [9]int{0, 0, 0, 0, 0, 0, 0, 0, 0},
-		Z:    [7]int{0, 0, 0, 0, 0, 0, 0},
-		Dora: 0,
-	}
-	assert.True(t, If7D(testCase1))
+	assert.True(t, Is7D(testCase[0]))
+	assert.False(t, Is7D(testCase[1]))
+	assert.False(t, Is7D(testCase[2]))
+	assert.True(t, Is7D(testCase[3]))
 }
 
 func TestIf13G(t *testing.T) {
-	testCase1 = models.PaiArr{
-		M:    [9]int{2, 2, 0, 2, 0, 0, 2, 2, 2},
-		P:    [9]int{0, 0, 2, 0, 0, 0, 0, 0, 0},
-		S:    [9]int{0, 0, 0, 0, 0, 0, 0, 0, 0},
-		Z:    [7]int{0, 0, 0, 0, 0, 0, 0},
-		Dora: 0,
-	}
-	assert.False(t, If13G(testCase1))
+	assert.False(t, Is13G(testCase[0]))
+	assert.True(t, Is13G(testCase[1]))
+	assert.False(t, Is13G(testCase[0]))
+	assert.True(t, Is13G(testCase[1]))
+}
+
+func TestIsNormal(t *testing.T) {
+	assert.False(t, IsNormal(testCase[0]))
+	assert.False(t, IsNormal(testCase[1]))
+	assert.True(t, IsNormal(testCase[2]))
+	assert.True(t, IsNormal(testCase[3]))
+}
+
+func TestIsAll(t *testing.T) {
+	assert.True(t, IsAll(testCase[0]))
+	assert.True(t, IsAll(testCase[1]))
+	assert.True(t, IsAll(testCase[2]))
+	assert.True(t, IsAll(testCase[3]))
 }
